@@ -3,7 +3,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../../"/>
-		<title>Metronic - The World's #1 Selling Bootstrap Admin Template by Keenthemes</title>
+		<title>Music</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -21,6 +21,8 @@
 		<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -50,7 +52,7 @@
 							<!--begin::Nav-->
 							<div class="stepper-nav">
 								<!--begin::Step 1-->
-								<div class="stepper-item current" data-kt-stepper-element="nav">
+								<div id="ss1" class="stepper-item current" data-kt-stepper-element="nav">
 									<!--begin::Wrapper-->
 									<div class="stepper-wrapper">
 										<!--begin::Icon-->
@@ -73,7 +75,7 @@
 								</div>
 								<!--end::Step 1-->
 								<!--begin::Step 2-->
-								<div class="stepper-item" data-kt-stepper-element="nav">
+								<div id="ss2" class="stepper-item" data-kt-stepper-element="nav">
 									<!--begin::Wrapper-->
 									<div class="stepper-wrapper">
 										<!--begin::Icon-->
@@ -96,7 +98,7 @@
 								</div>
 								<!--end::Step 2-->
 								<!--begin::Step 3-->
-								<div class="stepper-item" data-kt-stepper-element="nav">
+								<div id="ss3" class="stepper-item" data-kt-stepper-element="nav">
 									<!--begin::Wrapper-->
 									<div class="stepper-wrapper">
 										<!--begin::Icon-->
@@ -119,7 +121,7 @@
 								</div>
 								<!--end::Step 3-->
 								<!--begin::Step 4-->
-								<div class="stepper-item" data-kt-stepper-element="nav">
+								<div id="ss4" class="stepper-item" data-kt-stepper-element="nav">
 									<!--begin::Wrapper-->
 									<div class="stepper-wrapper">
 										<!--begin::Icon-->
@@ -142,7 +144,7 @@
 								</div>
 								<!--end::Step 4-->
 								<!--begin::Step 5-->
-								<div class="stepper-item" data-kt-stepper-element="nav">
+								<div id="ss5" class="stepper-item" data-kt-stepper-element="nav">
 									<!--begin::Wrapper-->
 									<div class="stepper-wrapper">
 										<!--begin::Icon-->
@@ -187,7 +189,11 @@
 						<div class="w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto">
 							<!--begin::Form-->
 							<form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form" action="{{ route('register') }}">
-            @csrf
+            						@csrf
+									<input type="hidden"  name="account_type" value="personal" id="account_type" />
+									<input type="hidden"  value="1" id="current_page" />
+									<input type="hidden"  value="0" id="account_plan" />
+									
 								<!--begin::Step 1-->
 								<div id="s1" class="current" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
@@ -218,7 +224,7 @@
 												<div class="col-lg-6">
 													<!--begin::Option-->
 													<input type="radio" class="btn-check" name="account_type" value="personal" checked="checked" id="kt_create_account_form_account_type_personal" />
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
+													<label data-id="Individual" class="company_individual btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
 														<i class="ki-duotone ki-badge fs-3x me-5">
 															<span class="path1"></span>
 															<span class="path2"></span>
@@ -240,7 +246,7 @@
 												<div class="col-lg-6">
 													<!--begin::Option-->
 													<input type="radio" class="btn-check" name="account_type" value="corporate" id="kt_create_account_form_account_type_corporate" />
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
+													<label data-id="Company" class="company_individual btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
 														<i class="ki-duotone ki-briefcase fs-3x me-5">
 															<span class="path1"></span>
 															<span class="path2"></span>
@@ -264,95 +270,16 @@
 								</div>
 								<!--end::Step 1-->
 								<!--begin::Step 2-->
-								<div id="s2" class="current" data-kt-stepper-element="content">
+								<div id="s2" class="pending" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
 									<div class="w-100">
 										<!--begin::Heading-->
-										<div class="pb-10 pb-lg-15">
-											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Account Info</h2>
-											<!--end::Title-->
-											<!--begin::Notice-->
-											<div class="text-muted fw-semibold fs-6">If you need more info, please check out
-											<a href="#" class="link-primary fw-bold">Help Page</a>.</div>
-											<!--end::Notice-->
-										</div>
-										<!--end::Heading-->
-										<!--begin::Input group-->
-										<div class="mb-10 fv-row">
-											<!--begin::Label-->
-											<label class="d-flex align-items-center form-label mb-3">Specify Team Size
-											<span class="ms-1" data-bs-toggle="tooltip" title="Provide your team size to help us setup your billing">
-												<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-													<span class="path1"></span>
-													<span class="path2"></span>
-													<span class="path3"></span>
-												</i>
-											</span></label>
-											<!--end::Label-->
-											<!--begin::Row-->
-											<div class="row mb-2" data-kt-buttons="true">
-												<!--begin::Col-->
-												<div class="col">
-													<!--begin::Option-->
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary w-100 p-4">
-														<input type="radio" class="btn-check" name="account_team_size" value="1-1" />
-														<span class="fw-bold fs-3">1-1</span>
-													</label>
-													<!--end::Option-->
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col">
-													<!--begin::Option-->
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary w-100 p-4 active">
-														<input type="radio" class="btn-check" name="account_team_size" checked="checked" value="2-10" />
-														<span class="fw-bold fs-3">2-10</span>
-													</label>
-													<!--end::Option-->
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col">
-													<!--begin::Option-->
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary w-100 p-4">
-														<input type="radio" class="btn-check" name="account_team_size" value="10-50" />
-														<span class="fw-bold fs-3">10-50</span>
-													</label>
-													<!--end::Option-->
-												</div>
-												<!--end::Col-->
-												<!--begin::Col-->
-												<div class="col">
-													<!--begin::Option-->
-													<label class="btn btn-outline btn-outline-dashed btn-active-light-primary w-100 p-4">
-														<input type="radio" class="btn-check" name="account_team_size" value="50+" />
-														<span class="fw-bold fs-3">50+</span>
-													</label>
-													<!--end::Option-->
-												</div>
-												<!--end::Col-->
-											</div>
-											<!--end::Row-->
-											<!--begin::Hint-->
-											<div class="form-text">Customers will see this shortened version of your statement descriptor</div>
-											<!--end::Hint-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="mb-10 fv-row">
-											<!--begin::Label-->
-											<label class="form-label mb-3">Team Account Name</label>
-											<!--end::Label-->
-											<!--begin::Input-->
-											<input type="text" class="form-control form-control-lg form-control-solid" name="account_name" placeholder="" value="" />
-											<!--end::Input-->
-										</div>
-										<!--end::Input group-->
+										 
+										
 										<!--begin::Input group-->
 										<div class="mb-0 fv-row">
 											<!--begin::Label-->
-											<label class="d-flex align-items-center form-label mb-5">Select Account Plan
+											<label class="d-flex align-items-center form-label mb-5">Select You Are
 											<span class="ms-1" data-bs-toggle="tooltip" title="Monthly billing will be based on your account plan">
 												<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
 													<span class="path1"></span>
@@ -364,7 +291,7 @@
 											<!--begin::Options-->
 											<div class="mb-0">
 												<!--begin:Option-->
-												<label class="d-flex flex-stack mb-5 cursor-pointer">
+												<label data-id="1" class="account_type d-flex flex-stack mb-5 cursor-pointer">
 													<!--begin:Label-->
 													<span class="d-flex align-items-center me-2">
 														<!--begin::Icon-->
@@ -379,21 +306,21 @@
 														<!--end::Icon-->
 														<!--begin::Description-->
 														<span class="d-flex flex-column">
-															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Company Account</span>
-															<span class="fs-6 fw-semibold text-muted">Use images to enhance your post flow</span>
+															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Artist</span>
+														<!--<span class="fs-6 fw-semibold text-muted">Use images to enhance your post flow</span>-->
 														</span>
 														<!--end:Description-->
 													</span>
 													<!--end:Label-->
 													<!--begin:Input-->
 													<span class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="radio" name="account_plan" value="1" />
+														<input class="form-check-input account_plan" checked="checked" type="radio"  value="1" />
 													</span>
 													<!--end:Input-->
 												</label>
 												<!--end::Option-->
 												<!--begin:Option-->
-												<label class="d-flex flex-stack mb-5 cursor-pointer">
+												<label data-id="2" class="account_type d-flex flex-stack mb-5 cursor-pointer">
 													<!--begin:Label-->
 													<span class="d-flex align-items-center me-2">
 														<!--begin::Icon-->
@@ -408,21 +335,21 @@
 														<!--end::Icon-->
 														<!--begin::Description-->
 														<span class="d-flex flex-column">
-															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Developer Account</span>
-															<span class="fs-6 fw-semibold text-muted">Use images to your post time</span>
+															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Label</span>
+															<!--<span class="fs-6 fw-semibold text-muted">Use images to your post time</span>-->
 														</span>
 														<!--end:Description-->
 													</span>
 													<!--end:Label-->
 													<!--begin:Input-->
 													<span class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="radio" checked="checked" name="account_plan" value="2" />
+														<input class="form-check-input account_plan" type="radio"   value="2" />
 													</span>
 													<!--end:Input-->
 												</label>
 												<!--end::Option-->
 												<!--begin:Option-->
-												<label class="d-flex flex-stack mb-0 cursor-pointer">
+												<label data-id="3" class="account_type d-flex flex-stack mb-0 cursor-pointer">
 													<!--begin:Label-->
 													<span class="d-flex align-items-center me-2">
 														<!--begin::Icon-->
@@ -438,15 +365,45 @@
 														<!--end::Icon-->
 														<!--begin::Description-->
 														<span class="d-flex flex-column">
-															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Testing Account</span>
-															<span class="fs-6 fw-semibold text-muted">Use images to enhance time travel rivers</span>
+															<span class="fw-bold text-gray-800 text-hover-primary fs-5">Aggregator</span>
+															<!--<span class="fs-6 fw-semibold text-muted">Use images to enhance time travel rivers</span>-->
 														</span>
 														<!--end:Description-->
 													</span>
 													<!--end:Label-->
 													<!--begin:Input-->
 													<span class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="radio" name="account_plan" value="3" />
+														<input class="form-check-input account_plan" type="radio"  value="3" />
+													</span>
+													<!--end:Input-->
+												</label>
+												<!--end::Option-->
+												<!--begin:Option-->
+												<label data-id="4" class="account_type d-flex flex-stack mb-0 cursor-pointer">
+													<!--begin:Label-->
+													<span class="d-flex align-items-center me-2">
+														<!--begin::Icon-->
+														<span class="symbol symbol-50px me-6">
+															<span class="symbol-label">
+																<i class="ki-duotone ki-chart-pie-4 fs-1 text-gray-600">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																</i>
+															</span>
+														</span>
+														<!--end::Icon-->
+														<!--begin::Description-->
+														<span class="d-flex flex-column">
+															<span class="fw-bold text-gray-800 text-hover-primary fs-5"> Distributor</span>
+															<!--<span class="fs-6 fw-semibold text-muted">Use images to enhance time travel rivers</span>-->
+														</span>
+														<!--end:Description-->
+													</span>
+													<!--end:Label-->
+													<!--begin:Input-->
+													<span class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input account_plan" type="radio"  value="4" />
 													</span>
 													<!--end:Input-->
 												</label>
@@ -460,13 +417,13 @@
 								</div>
 								<!--end::Step 2-->
 								<!--begin::Step 3-->
-								<div id="s3" class="current" data-kt-stepper-element="content">
+								<div id="s3" class="pending" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
 									<div class="w-100">
 										<!--begin::Heading-->
 										<div class="pb-10 pb-lg-12">
 											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Business Details</h2>
+											<h2 class="fw-bold text-dark">Personal Details</h2>
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<div class="text-muted fw-semibold fs-6">If you need more info, please check out
@@ -477,85 +434,105 @@
 										<!--begin::Input group-->
 										<div class="fv-row mb-10">
 											<!--begin::Label-->
-											<label class="form-label required">Business Name</label>
+											<label class="form-label required">Full Name </label>
 											<!--end::Label-->
 											<!--begin::Input-->
-											<input name="business_name" class="form-control form-control-lg form-control-solid" value="Keenthemes Inc." />
+											<input name="name" id="name" placeholder="Please Enter Your Full Legal Name" class="form-control form-control-lg form-control-solid" value="" />
 											<!--end::Input-->
 										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
 										<div class="fv-row mb-10">
 											<!--begin::Label-->
-											<label class="d-flex align-items-center form-label">
-												<span class="required">Shortened Descriptor</span>
-												<span class="ms-1" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="&lt;div class=&#039;p-4 rounded bg-light&#039;&gt; &lt;div class=&#039;d-flex flex-stack text-muted mb-4&#039;&gt; &lt;i class=&quot;ki-duotone ki-bank fs-3 me-3&quot;&gt;&lt;span class=&quot;path1&quot;&gt;&lt;/span&gt;&lt;span class=&quot;path2&quot;&gt;&lt;/span&gt;&lt;/i&gt; &lt;div class=&#039;fw-bold&#039;&gt;INCBANK **** 1245 STATEMENT&lt;/div&gt; &lt;/div&gt; &lt;div class=&#039;d-flex flex-stack fw-semibold text-gray-600&#039;&gt; &lt;div&gt;Amount&lt;/div&gt; &lt;div&gt;Transaction&lt;/div&gt; &lt;/div&gt; &lt;div class=&#039;separator separator-dashed my-2&#039;&gt;&lt;/div&gt; &lt;div class=&#039;d-flex flex-stack text-dark fw-bold mb-2&#039;&gt; &lt;div&gt;USD345.00&lt;/div&gt; &lt;div&gt;KEENTHEMES*&lt;/div&gt; &lt;/div&gt; &lt;div class=&#039;d-flex flex-stack text-muted mb-2&#039;&gt; &lt;div&gt;USD75.00&lt;/div&gt; &lt;div&gt;Hosting fee&lt;/div&gt; &lt;/div&gt; &lt;div class=&#039;d-flex flex-stack text-muted&#039;&gt; &lt;div&gt;USD3,950.00&lt;/div&gt; &lt;div&gt;Payrol&lt;/div&gt; &lt;/div&gt; &lt;/div&gt;">
-													<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-														<span class="path1"></span>
-														<span class="path2"></span>
-														<span class="path3"></span>
-													</i>
-												</span>
-											</label>
+											<label class="form-label required">Date Of Birth</label>
 											<!--end::Label-->
 											<!--begin::Input-->
-											<input name="business_descriptor" class="form-control form-control-lg form-control-solid" value="KEENTHEMES" />
-											<!--end::Input-->
-											<!--begin::Hint-->
-											<div class="form-text">Customers will see this shortened version of your statement descriptor</div>
-											<!--end::Hint-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="fv-row mb-10">
-											<!--begin::Label-->
-											<label class="form-label required">Corporation Type</label>
-											<!--end::Label-->
-											<!--begin::Input-->
-											<select name="business_type" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
-												<option></option>
-												<option value="1">S Corporation</option>
-												<option value="1">C Corporation</option>
-												<option value="2">Sole Proprietorship</option>
-												<option value="3">Non-profit</option>
-												<option value="4">Limited Liability</option>
-												<option value="5">General Partnership</option>
-											</select>
+											<input type="date" name="dob" id="dob" placeholder="Please Enter Your DOB" class="form-control form-control-lg form-control-solid" value="" />
 											<!--end::Input-->
 										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="fv-row mb-10">
-											<!--end::Label-->
-											<label class="form-label">Business Description</label>
-											<!--end::Label-->
-											<!--begin::Input-->
-											<textarea name="business_description" class="form-control form-control-lg form-control-solid" rows="3"></textarea>
-											<!--end::Input-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
 										<div class="fv-row mb-0">
 											<!--begin::Label-->
 											<label class="fs-6 fw-semibold form-label required">Contact Email</label>
 											<!--end::Label-->
 											<!--begin::Input-->
-											<input name="business_email" class="form-control form-control-lg form-control-solid" value="corp@support.com" />
+											<input name="email" id="email" placeholder="Please Enter Your Email Id" class="form-control form-control-lg form-control-solid" value="" />
 											<!--end::Input-->
 										</div>
+
+										<div class="fv-row mb-0">
+											<!--begin::Label-->
+											<label class="fs-6 fw-semibold form-label required">Mobile Number</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<input type="number" name="mobile" placeholder="Please Enter Your Mobile Number" id="mobile" class="form-control form-control-lg form-control-solid" value="" />
+											<!--end::Input-->
+										</div>
+
+
+										<div class="fv-row mb-0">
+											<!--begin::Label-->
+											<label class="fs-6 fw-semibold form-label required">Username</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<input type="text" name="username" placeholder="Please Enter Your username" id="username" class="form-control form-control-lg form-control-solid" value="" />
+											<!--end::Input-->
+										</div>
+
+										
+										<div class="fv-row mb-10">
+											<!--begin::Label-->
+											<label class="form-label required">Country</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<select id="country" name="country" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select Country." data-allow-clear="true" data-hide-search="true">
+												<option></option>
+												<option value="1">S Corporation</option>
+											 
+											</select>
+											<!--end::Input-->
+										</div>
+										 
+										<div class="fv-row mb-0">
+											<!--begin::Label-->
+											<label class="fs-6 fw-semibold form-label required">Password</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<input type="text" id="password" name="password" placeholder="Enter Your Password" class="form-control form-control-lg form-control-solid" value="" />
+											<!--end::Input-->
+										</div>
+
+
+										<div class="fv-row mb-0">
+											<!--begin::Label-->
+											<label class="fs-6 fw-semibold form-label required">Confirm Password</label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<input type="text" id="c_password" placeholder="Re-Enter Your password" class="form-control form-control-lg form-control-solid" value="" />
+											<!--end::Input-->
+										</div>
+
+										<div class="fv-row mb-10">
+											<!--end::Label-->
+											<label class="form-label">Agree T & C </label>
+											<!--end::Label-->
+											<!--begin::Input-->
+											<input type="checkbox" id="c_password" class="form-check-input form-control" />
+											<!--end::Input-->
+										</div>
+										<!--end::Input group-->
+										<!--begin::Input group-->
+										
 										<!--end::Input group-->
 									</div>
 									<!--end::Wrapper-->
 								</div>
 								<!--end::Step 3-->
 								<!--begin::Step 4-->
-								<div id="s4" class="current" data-kt-stepper-element="content">
+								<div id="s4" class="pending" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
 									<div class="w-100">
 										<!--begin::Heading-->
 										<div class="pb-10 pb-lg-15">
 											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Billing Details</h2>
+											<h2 class="fw-bold text-dark">OTP Verification</h2>
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<div class="text-muted fw-semibold fs-6">If you need more info, please check out
@@ -567,7 +544,7 @@
 										<div class="d-flex flex-column mb-7 fv-row">
 											<!--begin::Label-->
 											<label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-												<span class="required">Name On Card</span>
+												<span class="required">Mobile OTP</span>
 												<span class="ms-1" data-bs-toggle="tooltip" title="Specify a card holder's name">
 													<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
 														<span class="path1"></span>
@@ -577,135 +554,33 @@
 												</span>
 											</label>
 											<!--end::Label-->
-											<input type="text" class="form-control form-control-solid" placeholder="" name="card_name" value="Max Doe" />
+											<input type="text" class="form-control form-control-solid" placeholder="Enter Mobile Number OTP" id="mobile_otp" name="mobile_otp" value="" />
 										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
+
 										<div class="d-flex flex-column mb-7 fv-row">
 											<!--begin::Label-->
-											<label class="required fs-6 fw-semibold form-label mb-2">Card Number</label>
-											<!--end::Label-->
-											<!--begin::Input wrapper-->
-											<div class="position-relative">
-												<!--begin::Input-->
-												<input type="text" class="form-control form-control-solid" placeholder="Enter card number" name="card_number" value="4111 1111 1111 1111" />
-												<!--end::Input-->
-												<!--begin::Card logos-->
-												<div class="position-absolute translate-middle-y top-50 end-0 me-5">
-													<img src="assets/media/svg/card-logos/visa.svg" alt="" class="h-25px" />
-													<img src="assets/media/svg/card-logos/mastercard.svg" alt="" class="h-25px" />
-													<img src="assets/media/svg/card-logos/american-express.svg" alt="" class="h-25px" />
-												</div>
-												<!--end::Card logos-->
-											</div>
-											<!--end::Input wrapper-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="row mb-10">
-											<!--begin::Col-->
-											<div class="col-md-8 fv-row">
-												<!--begin::Label-->
-												<label class="required fs-6 fw-semibold form-label mb-2">Expiration Date</label>
-												<!--end::Label-->
-												<!--begin::Row-->
-												<div class="row fv-row">
-													<!--begin::Col-->
-													<div class="col-6">
-														<select name="card_expiry_month" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Month">
-															<option></option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7">7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-															<option value="10">10</option>
-															<option value="11">11</option>
-															<option value="12">12</option>
-														</select>
-													</div>
-													<!--end::Col-->
-													<!--begin::Col-->
-													<div class="col-6">
-														<select name="card_expiry_year" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Year">
-															<option></option>
-															<option value="2023">2023</option>
-															<option value="2024">2024</option>
-															<option value="2025">2025</option>
-															<option value="2026">2026</option>
-															<option value="2027">2027</option>
-															<option value="2028">2028</option>
-															<option value="2029">2029</option>
-															<option value="2030">2030</option>
-															<option value="2031">2031</option>
-															<option value="2032">2032</option>
-															<option value="2033">2033</option>
-														</select>
-													</div>
-													<!--end::Col-->
-												</div>
-												<!--end::Row-->
-											</div>
-											<!--end::Col-->
-											<!--begin::Col-->
-											<div class="col-md-4 fv-row">
-												<!--begin::Label-->
-												<label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-													<span class="required">CVV</span>
-													<span class="ms-1" data-bs-toggle="tooltip" title="Enter a card CVV code">
-														<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-															<span class="path1"></span>
-															<span class="path2"></span>
-															<span class="path3"></span>
-														</i>
-													</span>
-												</label>
-												<!--end::Label-->
-												<!--begin::Input wrapper-->
-												<div class="position-relative">
-													<!--begin::Input-->
-													<input type="text" class="form-control form-control-solid" minlength="3" maxlength="4" placeholder="CVV" name="card_cvv" />
-													<!--end::Input-->
-													<!--begin::CVV icon-->
-													<div class="position-absolute translate-middle-y top-50 end-0 me-3">
-														<i class="ki-duotone ki-credit-cart fs-2hx">
-															<span class="path1"></span>
-															<span class="path2"></span>
-														</i>
-													</div>
-													<!--end::CVV icon-->
-												</div>
-												<!--end::Input wrapper-->
-											</div>
-											<!--end::Col-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="d-flex flex-stack">
-											<!--begin::Label-->
-											<div class="me-5">
-												<label class="fs-6 fw-semibold form-label">Save Card for further billing?</label>
-												<div class="fs-7 fw-semibold text-muted">If you need more info, please check budget planning</div>
-											</div>
-											<!--end::Label-->
-											<!--begin::Switch-->
-											<label class="form-check form-switch form-check-custom form-check-solid">
-												<input class="form-check-input" type="checkbox" value="1" checked="checked" />
-												<span class="form-check-label fw-semibold text-muted">Save Card</span>
+											<label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+												<span class="required">Email OTP</span>
+												<span class="ms-1" data-bs-toggle="tooltip" title="Specify a card holder's name">
+													<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+														<span class="path1"></span>
+														<span class="path2"></span>
+														<span class="path3"></span>
+													</i>
+												</span>
 											</label>
-											<!--end::Switch-->
+											<!--end::Label-->
+											<input type="text" class="form-control form-control-solid" placeholder="Enter Email OTP" id="email_otp" name="email_otp" value="" />
 										</div>
+
 										<!--end::Input group-->
+									 										
 									</div>
 									<!--end::Wrapper-->
 								</div>
 								<!--end::Step 4-->
 								<!--begin::Step 5-->
-								<div id="s5" class="current" data-kt-stepper-element="content">
+								<div id="s5" class="pending" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
 									<div class="w-100">
 										<!--begin::Heading-->
@@ -715,7 +590,7 @@
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<div class="text-muted fw-semibold fs-6">If you need more info, please
-											<a href="../../demo1/dist/authentication/layouts/corporate/sign-in.html" class="link-primary fw-bold">Sign In</a>.</div>
+											<a href="" class="link-primary fw-bold">Sign In</a>.</div>
 											<!--end::Notice-->
 										</div>
 										<!--end::Heading-->
@@ -754,20 +629,19 @@
 									<!--end::Wrapper-->
 								</div>
 								<!--end::Step 5-->
-								<!--btn btn-lg btn-primary d-inline-block
-								btn btn-lg btn-primary d-none-->
+								
 								
 								<!--begin::Actions-->
 								<div class="d-flex flex-stack pt-15">
 									<div class="mr-2">
-										<button id="previous" type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
+										<button id="previous" data-id="previous" type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
 										<i class="ki-duotone ki-arrow-left fs-4 me-1">
 											<span class="path1"></span>
 											<span class="path2"></span>
 										</i>Previous</button>
 									</div>
 									<div>
-										<button type="button" id="submit" class="btn btn-lg btn-primary d-inline-block" data-kt-stepper-action="submit">
+										<button type="button" id="submit" class="btn btn-lg btn-primary" data-kt-stepper-action="submit">
 											<span class="indicator-label">Submit
 											<i class="ki-duotone ki-arrow-right fs-4 ms-2">
 												<span class="path1"></span>
@@ -776,7 +650,7 @@
 											<span class="indicator-progress">Please wait...
 											<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 										</button>
-										<button type="button" id="continue" class="btn btn-lg btn-primary d-inline-block" data-kt-stepper-action="next">Continue
+										<button type="button" id="continue" data-id="continue"  class="btn btn-lg btn-primary d-inline-block" data-kt-stepper-action="next">Continue
 										<i class="ki-duotone ki-arrow-right fs-4 ms-1">
 											<span class="path1"></span>
 											<span class="path2"></span>
@@ -809,3 +683,178 @@
 	</body>
 	<!--end::Body-->
 </html>
+
+<script>
+$(document).ready(function(){
+ alert();
+ 
+ $( ".company_individual" ).on( "click", function() {
+	var data_account_type=$(this).attr("data-id");
+ 	$("#account_type").val(data_account_type);
+});
+
+$( ".account_plan" ).on( "click", function() {
+	// alert(123);
+	$( ".account_plan" ).removeClass( 'current');
+ 
+
+	var account_plan=$(this).attr("data-id");
+
+	var account_plan=$(this).attr("data-id");
+ 	$("#account_plan").val(account_plan);
+});
+
+
+$( "#submit" ).on( "click", function() {
+	$( "#s1,#s2,#s3,#s4" ).addClass( 'pending');
+		$( "#s1,#s2,#s3,#s4" ).removeClass( 'current');
+		$( "#s5" ).addClass( 'current');
+
+		$( "#ss1,#ss2,#ss3,#ss4" ).addClass( 'pending');
+		$( "#ss1,#ss2,#ss3,#ss4" ).removeClass( 'current');
+		$( "#ss5" ).addClass( 'current');
+		$( "#submit" ).removeClass( 'd-inline-block');
+
+
+		var baseUrl = ' <?php echo url(''); ?>';
+        var spinner = $('#loader');
+        $.ajax({
+            url: baseUrl + '/register_api',
+            method: "POST",
+            data: {
+				type_of_business: $("#account_type").val(), 
+				type_of_user: $("#account_plan").val(),
+				name: $("#name").val(),
+				dob: $("#dob").val(),
+				email: $("#email").val(),
+				mobile: $("#mobile").val(),
+				username: $("#username").val(),
+				country: $("#country").val(),
+				password: $("#password").val(),
+				"_token": "{{ csrf_token() }}",
+
+				},
+            datatype: 'JSON',
+            headers: {
+             },
+            beforeSend: function() {
+               
+            },
+            success: function (data) {
+                $(window).scrollTop(0);
+                if (data['status'] == 'success' && data['data']) {
+                    //  $(".alert-success.custom-msg strong").html(data['msg']);
+					alert("Your are register successfully");
+                 } else if (data['status'] == 'error' && data['msg']) {
+                    //  $(".alert-danger.custom-msg strong").html(data['msg']);
+					alert("somethink wrong plz try again");
+
+                 }
+                
+              
+            },
+            done: function (result) {
+                
+            }
+        });
+		// $( "#submit" ).addClass( 'd-inline-block');
+
+});
+
+
+
+ $( "#continue,#previous" ).on( "click", function() {
+	var current_page =$("#current_page").val();
+	var tab_type=$(this).attr("data-id");
+	if(tab_type=="previous"){
+		var current_page=(parseInt(current_page)-1);
+	}
+	if(tab_type=="continue"){
+		var current_page=(parseInt(current_page)+1);
+	}
+ 	// alert(current_page);
+
+	$("#current_page").val(current_page);
+	
+	// s
+	// d-inline-block
+	// d-none
+
+	// ss
+	// completed
+	// current
+	// pending
+
+	if (current_page==1) {
+ 		$( "#s2,#s3,#s4,#s5" ).addClass( 'pending');
+		$( "#s2,#s3,#s4,#s5" ).removeClass( 'current');
+		$( "#s1" ).addClass( 'current');
+
+		$( "#ss2,#ss3,#ss4,#ss5" ).addClass( 'pending');
+		$( "#ss2,#ss3,#ss4,#ss5" ).removeClass( 'current');
+		$( "#ss1" ).addClass( 'current');
+
+		$( "#previous" ).addClass( 'd-none');
+	}
+	if (current_page==2) {
+ 		$( "#s1,#s3,#s4,#s5" ).addClass( 'pending');
+		$( "#s1,#s3,#s4,#s5" ).removeClass( 'current');
+		$( "#s2" ).addClass( 'current');
+
+		$( "#ss1,#ss3,#ss4,#ss5" ).addClass( 'pending');
+		$( "#ss1,#ss3,#ss4,#ss5" ).removeClass( 'current');
+		$( "#ss2" ).addClass( 'current');
+		$( "#previous" ).addClass( 'd-inline-block');
+
+	}
+	if (current_page==3) {
+ 		$( "#s1,#s2,#s4,#s5" ).addClass( 'pending');
+		$( "#s1,#s2,#s4,#s5" ).removeClass( 'current');
+		$( "#s3" ).addClass( 'current');
+
+		$( "#ss1,#ss2,#ss4,#ss5" ).addClass( 'pending');
+		$( "#ss1,#ss2,#ss4,#ss5" ).removeClass( 'current');
+		$( "#ss3" ).addClass( 'current');
+
+		$( "#previous" ).addClass( 'd-inline-block');
+	}
+	if (current_page==4) {
+ 		$( "#s1,#s2,#s3,#s5" ).addClass( 'pending');
+		$( "#s1,#s2,#s3,#s5" ).removeClass( 'current');
+		$( "#s4" ).addClass( 'current');
+
+		$( "#ss1,#ss2,#ss3,#ss5" ).addClass( 'pending');
+		$( "#ss1,#ss2,#ss3,#ss5" ).removeClass( 'current');
+		$( "#ss4" ).addClass( 'current');
+
+
+		// $( "#previous" ).addClass( 'd-inline-block');
+		$( "#previous" ).removeClass( 'd-inline-block');
+		$( "#continue" ).removeClass( 'd-inline-block');
+		$( "#continue" ).addClass( 'd-none');
+		$( "#submit" ).addClass( 'd-inline-block');
+	}
+	if (current_page==5) {
+ 		$( "#s1,#s2,#s3,#s4" ).addClass( 'pending');
+		$( "#s1,#s2,#s3,#s4" ).removeClass( 'current');
+		$( "#s5" ).addClass( 'current');
+
+		$( "#ss1,#ss2,#ss3,#ss4" ).addClass( 'pending');
+		$( "#ss1,#ss2,#ss3,#ss4" ).removeClass( 'current');
+		$( "#ss5" ).addClass( 'current');
+
+		
+
+ 		 
+		
+	}
+	// $("#account_type").val(data_account_type);
+
+
+	
+
+});
+
+});
+
+</script>

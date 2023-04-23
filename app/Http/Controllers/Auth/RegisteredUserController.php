@@ -36,19 +36,44 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string'],
+            'type_of_business' =>['required', 'string', 'max:255'],
+            'type_of_user' =>['required', 'string', 'max:255'],
+            'dob' =>['required', 'string', 'max:255'],
+            'mobile' =>['required', 'string', 'max:255'],
+            'username' =>['required', 'string', 'max:255'],
+            'country' =>['required', 'string', 'max:255'],
+            // 'state' =>['required', 'string', 'max:255'],
+            // 'city' =>['required', 'string', 'max:255'],
+            // 'v_mobile' =>['required', 'string', 'max:255'],
+            // 'v_email' =>['required', 'string', 'max:255'],
+            // 'language' =>['required', 'string', 'max:255']
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'type_of_business' => $request->type_of_business,
+            'type_of_user'=> $request->type_of_user,
+            'dob' => $request->dob,
+            'mobile' => $request->mobile,
+            'username' => $request->username,
+            'country' => $request->country,
+            // 'state' => $request->state,
+            // 'city' => $request->city,
+            'v_mobile' => 1,
+            'v_email' => 1,
+            // 'language' => $request->language,
         ]);
 
-        event(new Registered($user));
+        return response()->json(['status' => 'success', 'data' => $user]);
+				 
+        // event(new Registered($user));
 
-        Auth::login($user);
+        
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
     }
 }
