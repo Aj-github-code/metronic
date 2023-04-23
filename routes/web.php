@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::get('/dashboard', [ProfileController::class, 'index' ])->name('dashboard');
+    Route::group(['prefix'=> 'profile'], function(){
+        Route::post('/edit', [ProfileController::class, 'edit' ])->name('profile.edit');  
+        Route::post('/kyc', [ProfileController::class, 'kyc' ])->name('profile.kyc');  
+    });
+    
 });
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
 require __DIR__.'/auth.php';

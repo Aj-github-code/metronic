@@ -326,7 +326,7 @@
 											<!--begin:Menu item-->
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link active" href="../../demo1/dist/pages/user-profile/overview.html">
+												<a class="menu-link {{($tab == 1) ? 'active' : ''}}" href="{{route('dashboard')}}?tab=1">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -338,27 +338,16 @@
 											<!--begin:Menu item-->
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link" href="../../demo1/dist/pages/user-profile/projects.html">
+												<a class="menu-link {{($tab == 2) ? 'active' : ''}}" href="{{route('dashboard')}}?tab=2">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-													<span class="menu-title">Identity Proof</span>
+													<span class="menu-title">Documents</span>
 												</a>
 												<!--end:Menu link-->
 											</div>
 											<!--end:Menu item-->
-											<!--begin:Menu item-->
-											<div class="menu-item">
-												<!--begin:Menu link-->
-												<a class="menu-link" href="../../demo1/dist/pages/user-profile/campaigns.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-													<span class="menu-title">Address Proof</span>
-												</a>
-												<!--end:Menu link-->
-											</div>
-											<!--end:Menu item-->
+										
 								
 										</div>
 										<!--end:Menu sub-->
